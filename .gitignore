@@ -1,0 +1,33 @@
+# Entornos Virtuales
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# Logs y Artefactos
+logs/
+*.log
+results/
+Resultados/
+Resultados_Tracker/
+*.tmp
+*.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.whl
+*.so
+
+# IDE / Editores
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Cobertura y Tests
+.coverage
+htmlcov/
+.pytest_cache/
