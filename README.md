@@ -1,4 +1,12 @@
 # IP-Tracker: Advanced Target Information Gatherer
+
+![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)
+![GitLab](https://img.shields.io/badge/GitLab-Repository-orange?logo=gitlab)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Status](https://img.shields.io/badge/Status-Stable-brightgreen)
+![OSINT](https://img.shields.io/badge/Type-OSINT-informational)
+![Educational](https://img.shields.io/badge/Purpose-Educational-blue)
+
 > 📊 **[Ver Diagrama de Arquitectura y Flujo DevSecOps](./diagrams/arquitectura.md)**
 > [!WARNING]
 > **Ethical & Professional Use Statement**
