@@ -1,9 +1,9 @@
 # =============================================================================
-# scripts/publish_public.ps1 - VERSIÓN SANDBOXED (SENIOR)
+# scripts/publish_public.ps1 - VERSIÓN IP-TRACKER (SENIOR)
 # Sincronización Segura: GitLab (Completo) -> GitHub (Sanitizado/Docs)
 # =============================================================================
 
-Write-Host "[*] Iniciando sincronización profesional de Sandboxed..." -ForegroundColor Cyan
+Write-Host "[*] Iniciando sincronización profesional de IP-Tracker..." -ForegroundColor Cyan
 
 # 1. Validaciones Iniciales
 $currentBranch = git rev-parse --abbrev-ref HEAD
