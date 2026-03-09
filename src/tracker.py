@@ -16,7 +16,8 @@ BOLD = '\033[1m'
 
 def limpiar_pantalla():
     """Limpia la pantalla de forma multiplataforma"""
-    os.system("cls" if os.name == "nt" else "clear")
+    # nosec B605: El comando está harcodeado y no hay riesgo de inyección
+    os.system("cls" if os.name == "nt" else "clear")  # nosec
 
 def banner():
     """Muestra el banner de la aplicación"""
