@@ -87,11 +87,3 @@ cd IP-Tracker
 # Una vez descargado desde la fuente segura o dentro del laboratorio
 python3 src/tracker.py
 ```
-
----
-
-## 📜 Licenciamiento e Implicatura
-
-Este proyecto dispone de una licencia **Apache 2.0**. Puedes bifurcarlo, modificarlo y emplearlo libremente bajo finalidades estrictamente **educativas e investigativas**.
-
-### End of Documentation
