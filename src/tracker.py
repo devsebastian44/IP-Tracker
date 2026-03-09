@@ -14,11 +14,11 @@ YELLOW = '\033[33m'
 RESET = '\033[0m'
 BOLD = '\033[1m'
 
+
 def limpiar_pantalla():
     """Limpia la pantalla de forma multiplataforma"""
     # nosec B605: El comando está harcodeado y no hay riesgo de inyección
     os.system("cls" if os.name == "nt" else "clear")  # nosec
-
 
 
 def banner():
@@ -27,7 +27,7 @@ def banner():
     p1 = f"{BLUE} ._____________        ___________                     "
     p1 += f"__                  {RESET}"
     p2 = f"{BLUE} |   \\______   \\       \\__    ___/___________    "
-    p2 += f"____ |  | __ ___________  {RESET}"
+    p2 += f"____ |  | __ ________xxx  {RESET}"
     p3 = f"{BLUE} |   ||     ___/  ______ |    |  \\_  __ \\__  \\ _"
     p3 += f"/ ___|  |/ // __ \\_  __ \\ {RESET}"
     p4 = f"{BLUE} |   ||    |     /_____/ |    |   |  | \\// __ \\\\  "
@@ -45,14 +45,12 @@ def banner():
     print("")
 
 
-
 def crear_carpeta_resultados():
     """Crea carpeta para guardar resultados"""
     carpeta = "Resultados_Tracker"
     if not os.path.exists(carpeta):
         os.makedirs(carpeta)
     return carpeta
-
 
 
 def validar_ip(ip):
@@ -64,7 +62,6 @@ def validar_ip(ip):
     return False
 
 
-
 def validar_telefono(numero_completo):
     """Valida formato de número de teléfono"""
     try:
@@ -74,11 +71,9 @@ def validar_telefono(numero_completo):
         return False
 
 
-
 def pausar():
     """Pausa para que el usuario pueda leer los resultados"""
     input(f"\n{BOLD}[Presiona ENTER para continuar...]{RESET}")
-
 
 
 def geolocalizar_ip_metodo1(ip_address):
@@ -164,7 +159,6 @@ def geolocalizar_ip_metodo1(ip_address):
         return None
 
 
-
 def geolocalizar_ip_metodo2(ip_address):
     """Método 2: Usando ipinfo.io"""
     print(f"\n{YELLOW}[*]{RESET} Consultando ipinfo.io...")
@@ -178,7 +172,9 @@ def geolocalizar_ip_metodo2(ip_address):
 
             # Verificar si hay error
             if 'error' in data:
-                err_msg = data.get('error', {}).get('message', 'Error desconocido')
+                err_msg = data.get('error', {}).get(
+                    'message', 'Error desconocido'
+                )
                 print(f"{RED}[!]{RESET} Error: {err_msg}")
                 return None
 
@@ -211,7 +207,8 @@ def geolocalizar_ip_metodo2(ip_address):
                 file.write(f"Longitud: {longitude}\n")
                 file.write(f"Organización: {data.get('org', 'N/A')}\n")
                 file.write(f"Zona horaria: {data.get('timezone', 'N/A')}\n")
-                maps_url = f"https://www.google.com/maps?q={latitude},{longitude}"
+                maps_url = "https://www.google.com/maps?q="
+                maps_url += f"{latitude},{longitude}"
                 file.write(f"\nGoogle Maps: {maps_url}\n")
 
             # Mostrar resultados en pantalla
@@ -247,7 +244,6 @@ def geolocalizar_ip_metodo2(ip_address):
         return None
 
 
-
 def analizar_telefono():
     """Analiza información de número telefónico"""
     print("\n" + "="*60)
@@ -264,7 +260,8 @@ def analizar_telefono():
     opcion = input(promp_str).strip()
 
     if opcion == "1":
-        numero_completo = input(f"{BOLD}Número completo (con +): {RESET}").strip()
+        msg = f"{BOLD}Número completo (con +): {RESET}"
+        numero_completo = input(msg).strip()
         if not numero_completo.startswith('+'):
             numero_completo = '+' + numero_completo
     elif opcion == "2":
@@ -387,7 +384,6 @@ def analizar_telefono():
     pausar()
 
 
-
 def menu_ip():
     """Menú para geolocalización de IP"""
     while True:
@@ -406,7 +402,8 @@ def menu_ip():
             continue
 
         if opcion in ["1", "2", "3"]:
-            ip_address = input(f"\n{BOLD}Ingrese la dirección IP: {RESET}").strip()
+            msg = f"\n{BOLD}Ingrese la dirección IP: {RESET}"
+            ip_address = input(msg).strip()
 
             if not validar_ip(ip_address):
                 print(f"{RED}[!]{RESET} Dirección IP inválida")
@@ -429,7 +426,6 @@ def menu_ip():
         else:
             print(f"{RED}[!]{RESET} Opción inválida")
             pausar()
-
 
 
 def menu_principal():
@@ -455,13 +451,13 @@ def menu_principal():
             analizar_telefono()
         elif opcion == "3":
             limpiar_pantalla()
-            msg = f"\n{GREEN}[✓]{RESET} ¡Gracias por usar IP & Phone Tracker!\n"
+            msg = f"\n{GREEN}[✓]{RESET} "
+            msg += "¡Gracias por usar IP & Phone Tracker!\n"
             print(msg)
             break
         else:
             print(f"{RED}[!]{RESET} Opción inválida")
             pausar()
-
 
 
 def main():
@@ -473,6 +469,7 @@ def main():
         limpiar_pantalla()
         print(f"\n{YELLOW}[!]{RESET} Programa interrumpido por el usuario\n")
         sys.exit(0)
+
 
 if __name__ == "__main__":
     main()
