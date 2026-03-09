@@ -7,11 +7,6 @@
 ![OSINT](https://img.shields.io/badge/Type-OSINT-informational)
 ![Educational](https://img.shields.io/badge/Purpose-Educational-blue)
 
-> 📊 **[Ver Diagrama de Arquitectura y Flujo DevSecOps](./diagrams/arquitectura.md)**
-> [!WARNING]
-> **Ethical & Professional Use Statement**
-> Este proyecto (`IP-Tracker`) ha sido desarrollado bajo un enfoque **estricto de Ciberseguridad Defensiva y Análisis de Inteligencia de Fuentes Abiertas (OSINT)**. Su propósito es exclusivo para investigación académica, auditorías autorizadas de seguridad y laboratorios de pruebas (`Red Teaming` controlado). El uso indebido para rastreo no autorizado o recolección maliciosa de datos es ilegal. Al utilizar este software, asumes la total responsabilidad de tus acciones y confirmas regirte mediante un código ético profesional.
-
 ---
 
 ## 🎯 Objetivo Técnico
@@ -36,18 +31,19 @@ IP-Tracker/
 ├── tests/                # Pruebas unitarias y de integración (Excluido en GitHub)
 ├── docs/                 # Documentación técnica adicional
 ├── diagrams/             # Diagramas arquitectónicos (Mermaid/MD)
-├── Img/                  # Recursos visuales (Logos/Capturas)
 ├── .gitlab-ci.yml        # Pipeline DevSecOps (GitLab only)
 ├── .gitignore            # Filtros de exclusión
 ├── LICENSE               # Licencia Apache 2.0
 └── README.md             # Esta documentación base
 ```
 
-> [!NOTE]
-> **Separación de Entornos (Public / Private Strategy)**
-> El código mantenido dentro de este repositorio de GitHub constituye la **versión pública y sanitizada** (orientada a portafolio profesional y auditoría externa).
->
-> El entorno de desarrollo core y validación integral se mantiene de manera **privada en GitLab**, donde se operan: configuraciones críticas, rutinas de carga/payloads, infraestructura de dependencias y analítica estática, actuando este siempre como la `Source of Truth` (Fuente de Verdad).
+## 🚀 Instalación y Acceso
+
+> [!IMPORTANT]
+> El repositorio completo con todo el código funcional está disponible en **GitLab** para acceso completo.
+
+https://gitlab.com/group-cybersecurity-lab/IP-Tracker.git
+
 
 ---
 
