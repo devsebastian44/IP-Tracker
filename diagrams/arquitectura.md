@@ -22,7 +22,7 @@ flowchart TD
         direction TB
         Ready --> Trigger[Ejecución script manual]
         Trigger --> Branch[Creación de rama temporal 'public']
-        Branch --> Purge[Purga de archivos sensibles:<br/>- src/<br/>- tests/<br/>- configs/]
+        Branch --> Purge[Purga de archivos sensibles:<br/>- tests/<br/>- .gitlab-ci.yml<br/>- scripts/ operacionales]
     end
 
     subgraph Portafolio_Publico ["🐙 Entorno Público (GitHub) - Sanitizado"]

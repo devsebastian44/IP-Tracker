@@ -31,12 +31,15 @@ Este repositorio ha sido estructurado bajo estándares **DevSecOps**, asegurando
 
 ```
 IP-Tracker/
-├── src/                  # Código fuente principal (Aplicación/Core)
-├── scripts/              # Automatizaciones DevSecOps (Deploy local, sanitización)
-├── tests/                # [GitLab] Pruebas unitarias y de integración (CI/CD)
-├── docs/                 # Documentación técnica y diagramas arquitectónicos
-├── .gitlab-ci.yml        # Pipeline DevSecOps (Linting, Unit Testing y SAST)
-├── .gitignore            # Filtros de seguridad para evitar fuga de credenciales/artefactos
+├── src/                  # Código fuente principal (Core / Aplicación)
+├── scripts/              # Automatizaciones DevSecOps (Sanitización)
+├── tests/                # Pruebas unitarias y de integración (Excluido en GitHub)
+├── docs/                 # Documentación técnica adicional
+├── diagrams/             # Diagramas arquitectónicos (Mermaid/MD)
+├── Img/                  # Recursos visuales (Logos/Capturas)
+├── .gitlab-ci.yml        # Pipeline DevSecOps (GitLab only)
+├── .gitignore            # Filtros de exclusión
+├── LICENSE               # Licencia Apache 2.0
 └── README.md             # Esta documentación base
 ```
 
@@ -56,8 +59,8 @@ Para garantizar que el entorno público (GitHub) nunca exponga configuraciones s
 Se trata de una pieza de automatización de seguridad crítica que actúa de la siguiente forma:
 
 1. **Aislamiento en Rama Pública**: En el entorno aislado (GitLab), el desarrollador invoca el script validando su local y generando una versión clon en una rama segura denominada `public`.
-2. **Filtrado DevSecOps (Purga)**: En la rama temporal, el script depura toda la información operativa del laboratorio: elimina el código backend/ejecutor agresivo (`src/`), rutinas automatizadas de testing (`tests/`), variables/configuraciones (`configs/`), CI interna y scripts operacionales sensibles. 
-3. **Control de Emisión Push Force**: Una vez validado localmente el paquete expurgable/sanitizado con sus respectivas documentaciones y vistas (`docs/`, `diagrams/`), ejecuta únicamente un envío forzado hacia el `Origin` destino: Este repositorio de GitHub. 
+2. **Filtrado DevSecOps (Purga)**: En la rama temporal, el script depura toda la información operativa del laboratorio: elimina rutinas automatizadas de testing (`tests/`), variables/configuraciones locales (`configs/` si existieran), la CI interna (`.gitlab-ci.yml`) y scripts operacionales sensibles.
+3. **Control de Emisión Push Force**: Una vez validado localmente el paquete sanitizado con sus respectivas documentaciones y vistas (`src/`, `docs/`, `diagrams/`, `Img/`), ejecuta únicamente un envío forzado hacia el `Origin` destino: Este repositorio de GitHub.
 4. **Resilencia de Laboratorio**: Una vez emitido la versión estable exterior, la máquina retorna su estado intacto hacia la rama de trabajo `main` del Laboratorio.
 
 ---
