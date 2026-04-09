@@ -75,6 +75,9 @@ Aprovisionamiento dentro del entorno OSINT de Laboratorio:
 ```bash
 git clone https://github.com/Devsebastian44/IP-Tracker.git
 cd IP-Tracker
+
+# Instalar las dependencias base
+pip install -r requirements.txt
 ```
 
 ---
