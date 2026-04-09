@@ -18,18 +18,19 @@ before_script:
 linting:
   stage: lint
   script:
-    - pip install flake8
+    - pip install -r requirements-dev.txt
     - flake8 src/ tests/
   allow_failure: true
 
 unit_testing:
   stage: test
   script:
-    - pip install pytest
+    - pip install -r requirements-dev.txt
     - pytest tests/ -v
 
 security_sast:
   stage: sast
   script:
-    - pip install bandit
+    - pip install -r requirements-dev.txt
     - bandit -r src/ -ll -ii
+    - pip-audit -r requirements.txt
