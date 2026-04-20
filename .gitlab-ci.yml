@@ -1,0 +1,36 @@
+stages:
+  - lint
+  - test
+  - sast
+
+image: python:3.9-slim
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+
+before_script:
+  - python -m pip install --upgrade pip
+
+linting:
+  stage: lint
+  script:
+    - pip install -r requirements-dev.txt
+    - flake8 src/ tests/
+  allow_failure: true
+
+unit_testing:
+  stage: test
+  script:
+    - pip install -r requirements-dev.txt
+    - pytest tests/ -v
+
+security_sast:
+  stage: sast
+  script:
+    - pip install -r requirements-dev.txt
+    - bandit -r src/ -ll -ii
+    - pip-audit -r requirements.txt
