@@ -1,38 +1,30 @@
-# Arquitectura y Flujo DevSecOps: IP-Tracker
+# Arquitectura y Flujo de Trabajo: IP-Tracker
 
-Este diagrama ilustra la separación estricta de entornos (Privado vs Público) y el proceso automatizado de sanitización para despliegues orientados a portafolio.
+Este diagrama ilustra el flujo de desarrollo y despliegue estandarizado en GitHub, enfocado en la transparencia y colaboración.
 
 ```mermaid
 flowchart TD
     %% Definición de Estilos
-    classDef gitlab fill:#fca326,stroke:#e24329,stroke-width:2px,color:#fff,font-weight:bold;
     classDef github fill:#181717,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold;
-    classDef script fill:#20c997,stroke:#12b886,stroke-width:2px,color:#fff,font-weight:bold;
+    classDef dev fill:#0366d6,stroke:#fff,stroke-width:1px,color:#fff;
 
-    subgraph Lab_Privado ["🦊 Entorno Privado (GitLab) - Source of Truth"]
+    subgraph Desarrollo ["💻 Entorno de Desarrollo"]
         direction TB
-        Dev[Desarrollo en 'main'] --> CI{Pipeline CI/CD}
-        CI -->|Linting| Rev[Flake8]
-        CI -->|Testing| Test[Pytest]
-        CI -->|Seguridad| SAST[Bandit SAST]
-        Rev & Test & SAST --> Ready[Código validado y seguro]
+        Code[Escritura de Código] --> TestLocal[Pruebas Locales]
+        TestLocal --> Lint[Linting & Estilo]
     end
 
-    subgraph Automatizacion ["⚙️ Script DevSecOps (publish_public.ps1)"]
+    subgraph GitHub_Repo ["🐙 Repositorio GitHub (Origin)"]
         direction TB
-        Ready --> Trigger[Ejecución script manual]
-        Trigger --> Branch[Creación de rama temporal 'public']
-        Branch --> Purge[Purga de archivos sensibles:<br/>- tests/<br/>- .gitlab-ci.yml<br/>- scripts/ operacionales]
+        Commit[Commits Convencionales] --> Push[Push a main]
+        Push --> Release[Versión Estable / Portafolio]
     end
 
-    subgraph Portafolio_Publico ["🐙 Entorno Público (GitHub) - Sanitizado"]
-        direction TB
-        Purge -->|Push Forzado| PushOrigin[Subida a origin (GitHub)]
-        PushOrigin --> DocsOnly[Exposición exclusiva de docs, diagramas y README]
-    end
+    %% Relaciones
+    Desarrollo --> GitHub_Repo
 
     %% Asignación de clases
-    Lab_Privado:::gitlab
-    Automatizacion:::script
-    Portafolio_Publico:::github
+    Desarrollo:::dev
+    GitHub_Repo:::github
 ```
+
